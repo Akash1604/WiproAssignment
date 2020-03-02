@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,92 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AssignmentTestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="145" estimatedRowHeight="1000" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Vc-fh-TKp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TableViewCell" id="WtK-MM-ynB" customClass="TableViewCell" customModule="TestApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="145"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WtK-MM-ynB" id="7P6-ea-Xcg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRu-YD-m6L">
+                                                    <rect key="frame" x="5" y="0.0" width="404" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blr-Qp-vIO">
+                                                    <rect key="frame" x="5" y="43" width="404" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J5l-4k-XlF">
+                                                    <rect key="frame" x="5" y="23" width="404" height="18"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnh-zc-uRN">
+                                                    <rect key="frame" x="5" y="69" width="404" height="71"/>
+                                                    <string key="text">qwaesrdtyguhijokpojiuytre5w3aestrdytfuhijouytre4w53serdytughijpouytrew3q4wertyuioiuytrewaesrtfyguhihugytw3qawsertyuijokjiuytreswarestrdtyu</string>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Mnh-zc-uRN" firstAttribute="leading" secondItem="7P6-ea-Xcg" secondAttribute="leading" constant="5" id="7N2-VR-Zu9"/>
+                                                <constraint firstItem="QRu-YD-m6L" firstAttribute="top" secondItem="7P6-ea-Xcg" secondAttribute="top" id="Mes-Dw-xMf"/>
+                                                <constraint firstItem="blr-Qp-vIO" firstAttribute="top" secondItem="J5l-4k-XlF" secondAttribute="bottom" constant="2" id="Ooy-By-EUo"/>
+                                                <constraint firstItem="blr-Qp-vIO" firstAttribute="leading" secondItem="7P6-ea-Xcg" secondAttribute="leading" constant="5" id="R0s-xZ-hnW"/>
+                                                <constraint firstAttribute="trailing" secondItem="blr-Qp-vIO" secondAttribute="trailing" constant="5" id="XCv-w5-OWr"/>
+                                                <constraint firstItem="Mnh-zc-uRN" firstAttribute="top" secondItem="blr-Qp-vIO" secondAttribute="bottom" constant="5" id="Xfd-uf-ztB"/>
+                                                <constraint firstItem="QRu-YD-m6L" firstAttribute="leading" secondItem="7P6-ea-Xcg" secondAttribute="leading" constant="5" id="aep-uh-Aud"/>
+                                                <constraint firstItem="J5l-4k-XlF" firstAttribute="leading" secondItem="7P6-ea-Xcg" secondAttribute="leading" constant="5" id="blf-3x-Vqc"/>
+                                                <constraint firstAttribute="trailing" secondItem="QRu-YD-m6L" secondAttribute="trailing" constant="5" id="e8x-vw-eIo"/>
+                                                <constraint firstAttribute="trailing" secondItem="J5l-4k-XlF" secondAttribute="trailing" constant="5" id="i5T-nT-sJO"/>
+                                                <constraint firstAttribute="bottom" secondItem="Mnh-zc-uRN" secondAttribute="bottom" constant="5" id="ik5-y1-Ddp"/>
+                                                <constraint firstAttribute="trailing" secondItem="Mnh-zc-uRN" secondAttribute="trailing" constant="5" id="jHz-cj-0cw"/>
+                                                <constraint firstItem="J5l-4k-XlF" firstAttribute="top" secondItem="QRu-YD-m6L" secondAttribute="bottom" constant="2" id="jf3-Cu-MFy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="body" destination="Mnh-zc-uRN" id="0eo-dh-aYQ"/>
+                                            <outlet property="title" destination="J5l-4k-XlF" id="uFW-8i-y3e"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ERx-j8-8OH"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="uhC-AM-bWg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Vc-fh-TKp" secondAttribute="trailing" id="6NT-XC-fap"/>
+                            <constraint firstItem="0Vc-fh-TKp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Smu-Ax-oNZ"/>
+                            <constraint firstItem="0Vc-fh-TKp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kIv-Ep-khQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0Vc-fh-TKp" secondAttribute="bottom" id="s3S-fp-fvH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="postsTable" destination="0Vc-fh-TKp" id="NTv-Hf-SJW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="110"/>
         </scene>
     </scenes>
 </document>
