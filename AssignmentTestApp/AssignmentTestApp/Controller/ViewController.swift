@@ -10,10 +10,14 @@ import UIKit
 import SystemConfiguration
 import SDWebImage
 
+
 class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var postsTable:UITableView!
     var viewmodel : ViewModel?
     var canadaDetailArray = [CanadaDetails]()
+    var refreshControl = UIRefreshControl()
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewmodel = ViewModel()
@@ -22,13 +26,16 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
+        self.postsTable.addSubview(refreshControl)
+        
         postsTable.delegate = self
         postsTable.dataSource = self
         self.title = "POSTS"
         postsTable.tableFooterView = UIView(frame: .zero)
         postsTable.estimatedRowHeight = 1000
         postsTable.rowHeight = UITableView.automaticDimension
-        //coredataResult  = CoredataHandler().getAllPosts() ?? nil
 
         if Reachability.isConnectedToNetwork(){
             getPosts()
@@ -36,7 +43,14 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
             postsTable.reloadData()
         }
     }
-    
+    @objc func refresh(sender:AnyObject) {
+       // Code to refresh table view
+        if Reachability.isConnectedToNetwork(){
+            getPosts()
+        }else{
+            postsTable.reloadData()
+        }
+    }
     func getPosts(){
         HttpClientApi.instance().getAPICall(url: Config.POSTS,parameter: [:], method: .get, decodingType: PostData.self, callback: Callback(onSuccess: { [weak self] (result) in
             guard let weakSelf = self else { return }
@@ -44,16 +58,15 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
             weakSelf.viewmodel?.getCanadaDetail(response:weakSelf.viewmodel!.response)
             weakSelf.canadaDetailArray = weakSelf.viewmodel!.canadaDetail
             DispatchQueue.main.async {
-                /*if self.coredataResult?.count == 0 {
-                    for post in self.viewmodel!.response {
-                        CoredataHandler().save(post: post)
-                    }
-                }*/
+                weakSelf.title = weakSelf.viewmodel?.response.title
                 print(weakSelf.canadaDetailArray)
                  weakSelf.postsTable.reloadData()
+                weakSelf.refreshControl.endRefreshing()
             }
-        }, onFailure: { (error) in
+        }, onFailure: { [weak self] (error) in
             print(error)
+            guard let weakSelf = self else { return }
+            weakSelf.refreshControl.endRefreshing()
         }))
     }
     
@@ -101,7 +114,6 @@ extension ViewController {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-        //return 280.0
     }
 }
 
