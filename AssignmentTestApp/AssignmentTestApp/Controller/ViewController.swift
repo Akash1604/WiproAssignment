@@ -8,7 +8,7 @@
 
 import UIKit
 import SystemConfiguration
-
+import SDWebImage
 
 class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var postsTable:UITableView!
@@ -67,14 +67,23 @@ extension ViewController {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+        let post = canadaDetailArray[indexPath.row]
         if canadaDetailArray.count > 0 {
-            let post = canadaDetailArray[indexPath.row]
             cell.title.text = post.title
             cell.body.text = post.description
+            if let imageRef = post.imageHref {
+                cell.imgView.sd_setImage(with: URL(string: imageRef), placeholderImage: UIImage(named: "placeholder"))
+            } else {
+                cell.imgView.image = UIImage(named: "placeholder")
+            }
+            
         }else{
             cell.title.text = "-"
             cell.body.text = "-"
+            cell.imgView.image = UIImage(named: "placeholder")
         }
+        
+
         cell.layer.shadowOffset = CGSize(width: 0, height: 0)
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowRadius = 5
