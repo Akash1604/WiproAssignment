@@ -38,18 +38,19 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
     }
     
     func getPosts(){
-        HttpClientApi.instance().getAPICall(url: Config.POSTS,parameter: [:], method: .get, decodingType: PostData.self, callback: Callback(onSuccess: { (result) in
-            self.viewmodel?.response = result as! PostData
-            self.viewmodel?.getCanadaDetail(response:self.viewmodel!.response)
-            self.canadaDetailArray = self.viewmodel!.canadaDetail
+        HttpClientApi.instance().getAPICall(url: Config.POSTS,parameter: [:], method: .get, decodingType: PostData.self, callback: Callback(onSuccess: { [weak self] (result) in
+            guard let weakSelf = self else { return }
+            weakSelf.viewmodel?.response = result as! PostData
+            weakSelf.viewmodel?.getCanadaDetail(response:weakSelf.viewmodel!.response)
+            weakSelf.canadaDetailArray = weakSelf.viewmodel!.canadaDetail
             DispatchQueue.main.async {
                 /*if self.coredataResult?.count == 0 {
                     for post in self.viewmodel!.response {
                         CoredataHandler().save(post: post)
                     }
                 }*/
-                print(self.canadaDetailArray)
-                 self.postsTable.reloadData()
+                print(weakSelf.canadaDetailArray)
+                 weakSelf.postsTable.reloadData()
             }
         }, onFailure: { (error) in
             print(error)
